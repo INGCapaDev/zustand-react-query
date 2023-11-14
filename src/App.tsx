@@ -16,6 +16,13 @@ const App = () => {
 
   return (
     <div>
+      <h1>Favorite Repositories</h1>
+      {favoriteReposIds.map((id) => (
+        <div key={id}>
+          {data?.find((repository) => repository.id === id)?.name ||
+            id.toString()}
+        </div>
+      ))}
       <h1>Repositories</h1>
       {data?.map((repository) => (
         <Card
