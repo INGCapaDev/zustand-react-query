@@ -3,7 +3,7 @@ import { useFetchRepositories } from './hooks/useRepos';
 import { useFavoriteReposStore } from './store/favoriteRepos';
 
 const App = () => {
-  const { data, isLoading, isError } = useFetchRepositories();
+  const { data, isLoading, isError } = useFetchRepositories('ingcapadev');
   const { favoriteReposIds } = useFavoriteReposStore();
 
   if (isLoading) {
@@ -19,8 +19,7 @@ const App = () => {
       <h1>Favorite Repositories</h1>
       {favoriteReposIds.map((id) => (
         <div key={id}>
-          {data?.find((repository) => repository.id === id)?.name ||
-            id.toString()}
+          {data?.find((repository) => repository.id === id)?.name || null}
         </div>
       ))}
       <h1>Repositories</h1>
